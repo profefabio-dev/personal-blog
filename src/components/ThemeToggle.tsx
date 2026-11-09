@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 // import styles from './ThemeToggle.module.scss';
 
 /* 
@@ -34,16 +35,10 @@ import { useState, useEffect } from 'react';
  */
 
 export default function ThemeToggle() {
-    // 1. Estado para el tema
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-    // Cargar tema desde localStorage al montar
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-    }, []);
+    
+    // 1. Estado para el tema con el custom hook useLocalStorage
+    // (lee el tema guardado y lo guarda automáticamente al cambiar)
+    const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
 
     // 3. Aplicar el tema al body cada vez que cambie
     useEffect(() => {
@@ -58,7 +53,7 @@ export default function ThemeToggle() {
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
+        //localStorage.setItem('theme', newTheme);
     };
 
     // 4. Botón con icono y texto según el tema
