@@ -1,0 +1,48 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.commentSection {
+    margin-top: $spacing-2xl;
+
+    h3 {
+        font-size: $font-size-2xl;
+        margin-bottom: $spacing-md;
+    }
+}
+
+// Formulario para agregar comentario
+.form {
+    @include flex(column);
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+
+    input,
+    textarea {
+        padding: $spacing-sm;
+        border: 1px solid $border-color;
+        border-radius: $radius-md;
+        font-family: $font-family-base;
+    }
+
+    button {
+        align-self: flex-start;
+        padding: $spacing-sm $spacing-lg;
+        border: none;
+        border-radius: $radius-md;
+        background: $primary-color;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+// Cada comentario de la lista
+.comment {
+    padding: $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-sm;
+
+    small {
+        color: $text-light;
+    }
+}

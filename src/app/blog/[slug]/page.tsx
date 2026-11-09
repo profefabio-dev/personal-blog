@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import postsData from '@/data/posts.json';
+import CommentSection from '@/components/CommentSection';
 import styles from './page.module.scss';
 
 // 1. generateStaticParams: le dice a Next.js qué páginas generar en el build (SSG)
@@ -40,6 +41,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 <Link href="/blog" className={styles.backLink}>
                     ← Volver al blog
                 </Link>
+                <CommentSection />
             </div>
         </article>
     );
